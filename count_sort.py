@@ -1,7 +1,8 @@
-# Python program for counting sort
-# which takes negative numbers as well
 
-# The function that sorts the given arr[]
+import time
+import random
+import matplotlib.pyplot as plt
+start_time = time.time()
 
 
 def count_sort(lst):
@@ -10,31 +11,48 @@ def count_sort(lst):
 
     # compute range of elements
     k = max_element - min_element + 1
-    # Create a count array to store count of individual
-    # elements and initialize count array as 0
 
-    count = [0 for i in range(k)]
-    output = [0 for i in range(len(lst))]
+    # list to storre count of each value
+    count = [0] * k
+
+    # output list
+    output = [0] * len(lst)
 
     # Store count of each character
-    for i in range(len(arr)):
+    for i in range(len(lst)):
         count[lst[i] - min_element] += 1
 
-    # Change count_arr[i] so that count_arr[i] now contains actual
-    # position of this element in output array
-
+    # Storing cumulative count
     for i in range(1, len(count)):
         count[i] += count[i-1]
 
-    # Build the output character array
-    for i in range(len(arr) - 1, -1, -1):
-        output[count[arr[i] - min_element] - 1] = arr[i]
-        count[arr[i] - min_element] -= 1
+    # Placing elements into the output array
+    for i in range(len(lst) - 1, -1, -1):
+        output[count[lst[i] - min_element] - 1] = lst[i]
+        count[lst[i] - min_element] -= 1
 
     return output
 
 
-# Driver program to test above function
-arr = [-5, -10, 0, -3, 8, 5, -1, 10]
-ans = count_sort(arr)
-print("Sorted character array is " + str(ans))
+def plot_graph(N, start_time):
+    lst = []
+    x_lst = []
+    y_lst = []
+    for i in range(N):
+        lst = [random.randint(-10, 10) for x in range(N)]
+        count_sort(lst)
+        x_lst.append(i)
+        y_lst.append(round(time.time() - start_time, 2))
+
+    plt.plot(x_lst, y_lst)
+    plt.xlabel("N")
+    plt.ylabel("Time")
+    plt.show()
+
+
+N = 5000
+
+plot_graph(N, start_time)
+
+lst = [-7, -12, -3, 5, 1, 5, -3, 5]
+print("Sorted list = ", count_sort(lst))
