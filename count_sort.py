@@ -31,7 +31,9 @@ def count_sort(lst):
         output[count[lst[i] - min_element] - 1] = lst[i]
         count[lst[i] - min_element] -= 1
 
-    return output
+    lst = output.copy()
+
+    return lst
 
 
 def plot_graph(N, start_time):
