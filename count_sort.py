@@ -77,7 +77,7 @@ def plot_graph(N, start_time):
     r_time = []
     # b_time = []
     for i in range(N):
-        lst = [random.randint(-10, 10) for x in range(N)]
+        lst = [random.randint(0, 1000) for x in range(N)]
         x_lst.append(i)
         count_sort(lst)
         c_time.append(round(time.time() - start_time, 2))
@@ -89,6 +89,8 @@ def plot_graph(N, start_time):
     # plt.plot(x_lst, y_lst, label = "O(n+k)")
     plt.xlabel("n")
     plt.ylabel("Time")
+    plt.title("Time Complexity for each of the sorting algorithm")
+    plt.legend()
     plt.show()
 
 
