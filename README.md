@@ -10,5 +10,5 @@ Theoretical and Empirical comparison of the following algorithms:
 
 Group Members:
 1. Muhammad Sabihul Hasan (04387)
-2. Hasan Naseem ()
-3. Saad Ahmed Khan ()
+2. Hasan Naseem (05102)
+3. Saad Ahmed Khan (04293)
